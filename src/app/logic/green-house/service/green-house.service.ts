@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { GREENHOUSE } from 'src/app/logic/green-house/green-house.json';
 import { GreenHouse } from 'src/app/logic/green-house/object/green-house';
+import { Observable, of} from 'rxjs';
 
 
 @Injectable({
@@ -10,7 +11,8 @@ export class GreenHouseService {
 
   constructor() { }
 
-  getGreenHouses() {
-    return GREENHOUSE;
+  // listening updates
+  getGreenHouses(): Observable<any>{
+    return of(GREENHOUSE);
   }
 }

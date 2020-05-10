@@ -4,6 +4,7 @@ import { GREENHOUSE } from './green-house.json';
 import { GreenHouseService } from './service/green-house.service';
 
 
+
 @Component({
   selector: 'app-green-house',
   templateUrl: './green-house.component.html',
@@ -15,15 +16,17 @@ export class GreenHouseComponent implements OnInit {
   // tslint:disable-next-line: no-inferrable-types
   habilitar: boolean = true;
 
-  // get greenhouse table
-  // greenhoues = GREENHOUSE;
+  // init greenhouse table
   greenhouses;
 
   constructor(private greenhouseService: GreenHouseService) {
    }
 
   ngOnInit(): void {
-    this.greenhouses = this.greenhouseService.getGreenHouses();
+    // subscribe on updates in greanhouse.json
+    this.greenhouseService.getGreenHouses().subscribe(
+      greenhouses => this.greenhouses = greenhouses
+      );
   }
 
 }
