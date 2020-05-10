@@ -1,1 +1,19 @@
-<p>green-house works!</p>
+<button type="button" (click) = "habilitar= (habilitar==true)? false: true">
+    {{ (habilitar == true) ? 'Hide Greenhouses Table' : 'Show me all greenhouses as a table'}}</button>
+
+<div class = "table-group" *ngIf="habilitar">
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Alias</th>
+                <th>Building</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let greanhouse of greenhouses">
+            <td>{{greanhouse.id}}</td>
+            <td>{{greanhouse.alias}}</td>
+            <td>{{greanhouse.bulding}}</td>
+        </tbody>
+    </table>
+</div>
